@@ -25,3 +25,10 @@ Questions to ask:
 source /usr/local/gromacs/bin/GMXRC # location of gmx
 
 python openmm_run.py -i step5_production.inp -p step3_input.psf -c step3_input.crd -t toppar.str --platform CPU -opdb prod_output.pdb -odcd prod_traj.dcd
+
+
+April To do:
+    - .xtc and .trr are both trajectory files, with xtc being more compressed but .trr inclues things like forces.
+    - .tpr contains input for system, topology, coordinates/solvent box.
+    - .gro/.pdb contain the reference structure, as an alternative to .tpr.
+
