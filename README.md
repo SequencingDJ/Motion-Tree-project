@@ -31,4 +31,30 @@ April To do:
     - .xtc and .trr are both trajectory files, with xtc being more compressed but .trr inclues things like forces.
     - .tpr contains input for system, topology, coordinates/solvent box.
     - .gro/.pdb contain the reference structure, as an alternative to .tpr.
+    - explore gmx-trjconv to clean trajectory file and then select only Calpha/backbone atoms. 
 
+
+tips: https://epcced.github.io/20220421_GROMACS_introduction/04-post-analysis/index.html
+https://manual.gromacs.org
+https://www.youtube.com/watch?v=VLvB1vyltu8
+
+Commands used on gmx:
+1: (remove PBC)gmx trjconv -s step_10.tpr -f step5_10.xtc -o sys_md_nojump.xtc -pbc nojump -n index.ndx
+2: (Centering) gmx trjconv -s step_10.tpr -f sys_md_nojump.xtc -o sys_md_centered.xtc -center -pbc mol -ur compact -n index.ndx
+3: (alighning) gmx trjconv -s step_10.tpr -f sys_md_centered.xtc -o sys_md_aligned.xtc -fit rot+trans -n index.xtc
+
+
+scp:
+scp djosep08@ssh.cryst.bbk.ac.uk:/d/user6/djosep08/Projects/project_gromacs/gromacs/rmsd.xvg .
+
+
+ group 0, group 1, group 2
+solu(protein), solv(water), system
+Files:
+-f (trajectory, .xtc/.trr)
+-s (structure+mass(db) .tpr, .gro,)
+-n (index, .ndx optional)
+-o output file
+
+vmd: 
+was successful, simulation obtained.
