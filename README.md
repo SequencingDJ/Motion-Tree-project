@@ -37,6 +37,7 @@ April To do:
 tips: https://epcced.github.io/20220421_GROMACS_introduction/04-post-analysis/index.html
 https://manual.gromacs.org
 https://www.youtube.com/watch?v=VLvB1vyltu8
+https://morphit-pro.cmp.uea.ac.uk/MorphItPro/faces/faces/about.xhtml?faces-redirect=true (server for visual changes)https://nglviewer.org/mdsrv/examples.html (view animations on the web)
 
 Commands used on gmx:
 1: (remove PBC)gmx trjconv -s step_10.tpr -f step5_10.xtc -o sys_md_nojump.xtc -pbc nojump -n index.ndx
@@ -55,6 +56,29 @@ Files:
 -s (structure+mass(db) .tpr, .gro,)
 -n (index, .ndx optional)
 -o output file
+
+https://www.researchgate.net/post/How_to_do_pca_analysis_of_c-alpha_atom_of_the_protein
+
+Selecting C-alpha:
+gmx convert-tpr
+
+(maybe create .xtc of only c-alpha as well)
+
+Creating index file:
+gmx select -s protein.tpr (group 3 is the Calphas.)
+>gmx make_ndx -f step5_10.gro -o ca.ndx
+>1 & 3 (selected both protein and c-alpha)
+> q (leave editor)
+
+rmsd calc
+>gmx rms -s step5_10.tpr -f step5_10.xtc -n ca.ndx -o rma_ca.xvg
+
+gmx trjconv -s system.tpr -f trajectory.xtc -n index.ndx -o ca_trajectory.xtc
+
+# take 2 with removing rotation/translation
+>gmx trjconv -s step5_10.tpr -f step5_10.xtc -n index.ndx -o fittedca.xtc -fit rot+trans
+
+
 
 vmd: 
 was successful, simulation obtained.
