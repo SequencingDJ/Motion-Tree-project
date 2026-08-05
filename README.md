@@ -24,7 +24,6 @@ Questions to ask:
 
 source /usr/local/gromacs/bin/GMXRC # location of gmx
 
-python openmm_run.py -i step5_production.inp -p step3_input.psf -c step3_input.crd -t toppar.str --platform CPU -opdb prod_output.pdb -odcd prod_traj.dcd
 
 
 April To do:
@@ -37,6 +36,7 @@ April To do:
 tips: https://epcced.github.io/20220421_GROMACS_introduction/04-post-analysis/index.html
 https://manual.gromacs.org
 https://www.youtube.com/watch?v=VLvB1vyltu8
+https://www.blopig.com/blog/2025/08/taming-the-trajectory-beast-a-simpler-way-to-sample-your-md-simulations/
 https://morphit-pro.cmp.uea.ac.uk/MorphItPro/faces/faces/about.xhtml?faces-redirect=true (server for visual changes)https://nglviewer.org/mdsrv/examples.html (view animations on the web)
 
 Commands used on gmx:
@@ -47,6 +47,7 @@ Commands used on gmx:
 
 scp:
 scp djosep08@ssh.cryst.bbk.ac.uk:/d/user6/djosep08/Projects/project_gromacs/gromacs/rmsd.xvg .
+scp -r step34 djosep08@ssh.cryst.bbk.ac.uk:Projects
 
 
  group 0, group 1, group 2
@@ -75,6 +76,8 @@ rmsd calc
 
 gmx trjconv -s system.tpr -f trajectory.xtc -n index.ndx -o ca_trajectory.xtc
 
+protein only .gro file
+>gmx trjconv -s step5_10.tpr -f step5_10.gro -o protein.gro \-n index.ndx
 # take 2 with removing rotation/translation
 >gmx trjconv -s step5_10.tpr -f step5_10.xtc -n index.ndx -o fittedca.xtc -fit rot+trans
 
