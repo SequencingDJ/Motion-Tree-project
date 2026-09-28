@@ -5,7 +5,11 @@ This repository is aimed at reproducing motion tree's from molecular simulations
 The motion tree python file, "motion_tree_full_nodes.py"
 requires a ./data folder, where the MD simulation needs to be saved, and also set as the current working directory to run.
 
-Currently, the file expects MD trajectory data, the example has been includes titled protein.gro and md_aligned.xtc, data that has already had pre-selection for calpha atoms. The steps using gromacs are seen at the end of the readme.
+Currently, the file expects MD trajectory data, the example includes 53ligand.gro and 53alignedligand.xtc, available on the university cluster servers at: 
+/d/projects/djosep08/3hpq/gromacs
+
+
+data that has already had pre-selection for calpha atoms. The steps using gromacs are seen at the end of the readme.
 It is possible to include all atoms for a potential AAMT, this can be implemented but not currently an option, 
 supplying a full trajectory (of all atoms instead of just Calpha atoms), will still result in a calpha MT, due to the atom selection for the universe settings.
 
